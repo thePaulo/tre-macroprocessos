@@ -1,0 +1,2326 @@
+<!DOCTYPE html>
+<head>
+<!-- Required Stylesheets -->
+<meta charset="UTF-8" /> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Required Javascript -->
+
+
+<!--<script src="jquery.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="bootstrap-treeview.js"></script>
+
+<style type="text/css">
+	body{
+		background-color: #222431 ;
+	}
+	.container{
+		background-color: #36384a;
+		margin-left: 200px;
+		width: 950px;
+		padding-top: 50px;
+		border-radius: 8px;
+	}
+	#tree{
+		margin-left: 100px;
+		width: 750px;
+	}
+	.topic{
+		display: inline;
+	}
+	footer{
+		box-sizing: border-box;
+		font-size: 14px;
+		background: #222431;
+		border-top: 1px solid #36384a;
+		margin-top: 10px;
+		padding: 30px 0;
+	}
+	.foot{
+		margin-top: 50px;
+		column-count: 2;
+	}
+</style>
+
+<script>
+function myFunction() {
+  $('#tree').treeview('expandAll', { levels: 4, silent: true });
+  // Declare variables
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('myInput');
+  if(input.value.length ==0 ){
+  	myCollapse();
+  }
+
+  filter = input.value.toUpperCase();
+  tree = document.getElementById('tree');
+  ul = tree.getElementsByTagName('ul')[0];
+  //ul = document.getElementById("myUL");
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    //a = li[i].getElementsByTagName("a")[0];
+    //txtValue = li.textContent || li.innerText;
+    txtValue = li[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+function sndSearch(){
+	$('#tree').treeview('search', [ '13.2', {
+    ignoreCase: true,     // case insensitive
+    exactMatch: false,    // like or equals
+    revealResults: true,  // reveal matching nodes
+
+	}]);
+}
+
+function whatever(){
+	$('#tree').treeview('expandAll', { levels: 4, silent: true });
+}
+
+function myCollapse(){
+	$('#tree').treeview('collapseAll', { silent: true });
+	$('#tree').treeview('expandAll', { levels: 1, silent: true });
+}
+</script>
+
+</head>
+
+<body>
+	<div class="topic">
+		<h3 style="margin-left: 450px;margin-top: 100px;color: white"> Arquitetura de Processos</h3>
+		<h3 style="margin-left: 470px;margin-top: 10px;font-size: 18px;color: white"> Versão 1.2</h3>
+	</div>
+	<!--<h5 style="margin-left: 100px;margin-right: auto;margin-top: 30px"> Digite aqui sua busca </h5>
+	<input type="text"  id="myInput" style="margin-left: 100px;margin-right: auto;margin-bottom: 50px;width: 300px"  onkeyup="myFunction()" placeholder="Procure por um processo...">
+	<div style="float: right;margin-bottom: 50px;margin-right: 100px">
+		<button class="btn btn-primary btn-lg" style="width: 250px;height: 35px" onclick="whatever()"> Expandir todos processos </button>
+		<button class="btn btn-primary btn-lg" style="width: 250px;height: 35px" onclick="myCollapse()"> Colapsar  </button>
+	</div>	
+	-->
+	<div class="container">
+		<input type="text"  id="myInput" style="margin-left: 100px;margin-right: auto;margin-bottom: 50px;width: 300px"  onkeyup="myFunction()" placeholder="Procure por um processo...">
+		<div id="tree">
+
+		</div>
+	</div>
+
+	<div class="foot">
+		<p style="color: #aaaaaa;font-size: 15px;margin-left: 20px">
+				<b>Preparação, organização, revisão e edição:</b>
+				<br><br>
+
+				<b>Assessoria de Apoio à Governança e Gestão Estratégica (ASPLAN):</b>
+				<br>
+				Maria Ruth Bezerra Maia de Hollanda
+					<br><br>
+				<b>Escritório Corporativo de Projetos:</b>
+				<br>
+				Welika Welkovic da Cunha Melo
+				<br><br><br>
+		</p>
+		<p style="color: #aaaaaa;font-size: 15px">
+				<b>Escritório de Processos Organizacionais e de Riscos:</b>
+				<br>
+				Iaperi Gábor Damasceno Árbocz	
+				<br>
+				<b>Núcleo de Estatística:</b>
+				<br>
+				Thiago de Medeiros Dantas
+				<br>
+
+				<b>Núcleo de Gestão Socioambiental:</b>
+				<br>
+				Lanna Patrícia da Silva
+				<br>
+
+				<b>Núcleo de Acessibilidade e Inclusão:</b>
+				<br>
+					Juliana Vieira Costa de Aguiar
+		</p>
+	</div>
+
+	<footer>
+		<h6 style="color: #aaaaaa;margin-left: 10px">
+				<b>@ 2021 Tribunal Regional Eleitoral do Rio Grande do Norte</b>
+				<br>
+				Presidente do TRE-RN:
+				Desembargador Gilson Barbosa de Albuquerque
+				<br>
+				Diretora-Geral da Secretaria:
+				Yvette Bezerra Guerreiro Maia
+		</h6>
+	</footer>
+
+	<script>
+		var tree = [
+		{
+		 	 text: '1. Macroprocesso Finalístico: Processo Eleitoral',
+		 	 backColor:'#C0C0C0',
+			 nodes: [ 
+			 {
+			 	 text: '1.1. Processo: Planejamento e Avaliação',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '1.1.1. Elaboração da Proposta Orçamentária de Pleitos',
+				 },{
+				 	 text: '1.1.2. Elaboração do Plano Integrado das Eleições',
+				 },{
+				 	 text: '1.1.3. Monitoramento do Plano das Eleições',
+				 },{
+				 	 text: '1.1.4. Avaliação do Pleito Eleitoral',
+				 },
+				 ]
+			},{
+			 	 text: '1.2. Processo: Preparação das Eleições',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '1.2.1. Aquisição e contratação de materiais e serviços',
+				 },{
+				 	 text: '1.2.2. Logística do final do Alistamento Eleitoral',
+				 },{
+				 	 text: '1.2.3. Reforço e deslocamento de pessoal ',
+				 },{
+				 	 text: '1.2.4. Mesários - convocação, treinamentos e alimentação',
+				 },{
+				 	 text: '1.2.5. Elaboração do Plano de Capacitação de Pleitos Eleitorais ',
+				 },{
+				 	 text: '1.2.6. Logística das Zonas Eleitorais',
+				 },{
+				 	 text: '1.2.7. Locais de votação, apuração e instalação das seções eleitorais',
+				 },{
+				 	 text: '1.2.8. Designação das Juntas Eleitorais',
+				 },{
+				 	 text: '1.2.9. Logística de segurança das Eleições',
+				 },{
+				 	 text: '1.2.10. Requisição de força federal ',
+				 },{
+				 	 text: '1.2.11. Logística de transporte, distribuição e recolhimento de materiais e pessoas',
+				 },{
+				 	 text: '1.2.12. Logística de transporte, distribuição e recolhimento de Urnas Eletrônicas',
+				 },{
+				 	 text: '1.2.13. Requisição de veículos ',
+				 },{
+				 	 text: '1.2.14. Planejamento e execução da logística de Tecnologia da Informação e Comunicação',
+				 },{
+				 	 text: '1.2.15. Preparação e treinamento nos sistemas eleitorais',
+				 },{
+				 	 text: '1.2.16. Urnas eletrônicas - Manutenção preventiva',
+				 },{
+				 	 text: '1.2.17. Urnas eletrônicas - Manutenção corretiva durante o período eleitoral',
+				 },{
+				 	 text: '1.2.18. Carga de aplicativos para as eleições',
+				 },{
+				 	 text: '1.2.19. Logística de distribuição e recolhimento de mídias, envelopes, peças e suprimentos de Urnas Eletrônicas',
+				 },
+				 ]
+			},{
+			 	 text: '1.3. Processo: Registro de Candidaturas',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '1.3.1. Instalação e configuração dos sistemas de registro de candidaturas',
+				 },{
+				 	 text: '1.3.2. Treinamento nos sistemas de registro de candidaturas',
+				 },{
+				 	 text: '1.3.3. Processamento dos requerimentos de registro de candidaturas',
+				 },{
+				 	 text: '1.3.4. Julgamento dos registros de candidaturas',
+				 },{
+				 	 text: '1.3.5. Fechamento da lista de candidatos aptos',
+				 },
+				 ]
+			},{
+			 	 text: '1.4. Processo: Propaganda Eleitoral',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '1.4.1. Regulamentação da propaganda eleitoral e poder de polícia',
+				 },{
+				 	 text: '1.4.2. Processamento das representações eleitorais - Propaganda Eleitoral',
+				 },{
+				 	 text: '1.4.3. Exercício do poder de polícia: Autuação, busca, apreensão e remoção',
+				 },{
+				 	 text: '1.4.4. Horário eleitoral e direito de resposta',
+				 },{
+				 	 text: '1.4.5. Denúncia e fiscalização ',
+				 },
+				 ]
+			},{
+			 	 text: '1.5. Processo: Comunicação',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '1.5.1. Atendimento ao eleitor (Disque-Eleitor)',
+				 },{
+				 	 text: '1.5.2. Elaboração e veiculação de campanhas eleitorais',
+				 },{
+				 	 text: '1.5.3. Pesquisa eleitoral - Registro de pesquisa eleitoral',
+				 },{
+				 	 text: '1.5.4. Informações e estatísticas do eleitorado ',
+				 },
+				 ]
+			},{
+			 	 text: '1.6. Processo: Votação e Auditoria',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '1.6.1. Eleições ordinárias ',
+				 },{
+				 	 text: '1.6.2  Eleições suplementares ',
+			 	 	 backColor:'#D1EEEE',
+				 	 nodes: [ {
+				 	 	text: '1.6.2.1. Eleições suplementares - Atividades Administrativas',
+				 	 },{
+				 	 	text: '1.6.2.2. Eleições suplementares - Logísitica de Eleições',
+				 	 },{
+				 	 	text: '1.6.2.3. Eleições suplementares – Atividades dos Cartórios Eleitorais',
+				 	 }
+				 	 ]
+				 },{
+				 	 text: '1.6.3. Simulados ',
+				 },{
+				 	 text: '1.6.4. Suporte a sistemas eleitorais ',
+				 },{
+				 	 text: '1.6.5. Auditoria da Votação Eletrônica',
+				 },
+				 ]
+			},{
+			 	 text: '1.7. Processo: Totalização e Transmissão',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '1.7.1. Totalização e transmissão dos resultados',
+				 },{
+				 	 text: '1.7.2. Divulgação dos resultados',
+				 },
+				 ]
+			},{
+			 	 text: '1.8. Processo: Prestação de Contas e Diplomação',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '1.8.1. Prestação de contas partidária anual',
+				 },{
+				 	 text: '1.8.2. Prestação de contas eleitorais',
+				 },{
+				 	 text: '1.8.3. Cadastramento de processos e usuários no Sistema de Contas – SICO',
+				 },{
+				 	 text: '1.8.4. Expedição de diplomas para candidatos eleitos',
+				 },{
+				 	 text: '1.8.5. Preparação e realização da solenidade de diplomação',
+				 },
+				 ]
+			}
+		 	]
+		},{
+			
+			text: '2. Macroprocesso Finalístico: Prestação Jurisdicional',
+		 	backColor:'#C0C0C0',
+		 	nodes:[{
+		 		text: '2.1 Processo: Processamento de Feitos',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '2.1.1. Registro processual',
+				 },{
+				 	 text: '2.1.2. Autuação e distribuição',
+				 },{
+				 	 text: '2.1.3. Controle de afastamentos de juízes da Corte para fins de distribuição e/ou conclusão de medidas urgentes ',
+				 },{
+				 	 text: '2.1.4. Elaboração e publicidade da ata de distribuição/redistribuição mensal de processos',
+				 },{
+				 	 text: '2.1.5. Redistribuição de processos judiciais',
+				 },{
+				 	 text: '2.1.6. Atos processuais',
+				 },{
+				 	 text: '2.1.7. Atos normativos e processos administrativos deliberados em Sessão',
+				 },{
+				 	 text: '2.1.8. Cumprimento de decisões judiciais',
+				 },{
+				 	 text: '2.1.9. Cumprimento de diligências e Oficiais de Justiça',
+				 },{
+				 	 text: '2.1.10. Comunicação dos atos processuais ',
+				 },{
+				 	 text: '2.1.11. Comunicação/notificação de decisões liminares ou de acórdãos às Zonas Eleitorais ',
+				 },{
+				 	 text: '2.1.12. Emissão de Certidões',
+				 },{
+				 	 text: '2.1.13. Lista tríplice',
+				 },{
+				 	 text: '2.1.14. Denúncia de irregularidade ocorrida em Zona Eleitoral',
+				 },{
+				 	 text: '2.1.15. Inscrição de multa eleitoral',
+				 },{
+				 	 text: '2.1.16. Multa partidária',
+				 },{
+				 	 text: '2.1.17. Registro de penalidades impostas pela OAB',
+				 },{
+				 	 text: '2.1.18. Gerenciamento das procurações arquivadas em período eleitoral',
+				 },{
+				 	 text: '2.1.19. Revisão do processamento de feitos e publicações judiciais',
+				 },{
+				 	 text: '2.1.20. Suspensão de atendimento ao público e de prazos processuais nas Zonas Eleitorais',
+				 },{
+				 	 text: '2.1.21. Gerenciamento do cadastro de autoridades que atuam perante a Corte ',
+				 },{
+				 	 text: '2.1.22. PJE: Gerenciamento, alimentação e manutenção ',
+				 },
+				 ]
+		 	},{
+		 		text: '2.2. Processo: Julgamento',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '2.2.1. Calendário das Sessões Plenárias',
+				 },{
+				 	 text: '2.2.2. Preparação das Sessões Plenárias (materiais e equipamentos)',
+				 },{
+				 	 text: '2.2.3. Elaboração da pauta de julgamento',
+				 },{
+				 	 text: '2.2.4. Gravação e degravação das Sessões Plenárias',
+				 },{
+				 	 text: '2.2.5. Gerenciamento do I-Pleno',
+				 },{
+				 	 text: '2.2.6. Ata das Sessões Plenárias',
+				 },{
+				 	 text: '2.2.7. Relatório de julgamento ',
+				 },{
+				 	 text: '2.2.8. Assessoramento durante e após a Sessão Plenária',
+				 },{
+				 	 text: '2.2.9. Apoio técnico-jurídico ao Procurador Regional Eleitoral',
+				 },{
+				 	 text: '2.2.10. Controle de presença dos juízes da Corte',
+				 },{
+				 	 text: '2.2.11. Emissão de certidão de julgamento ',
+				 },{
+				 	 text: '2.2.12. Expedição de atos ordinatórios ',
+				 },{
+				 	 text: '2.2.13. Pedido de vista dos autos pelo juiz assessorado',
+				 },{
+				 	 text: '2.2.14. Pedido de vista dos autos por outro juiz',
+				 },{
+				 	 text: '2.2.15. Procedimentos no caso de Juiz Relator com voto vencido',
+				 },{
+				 	 text: '2.2.16. Revisão de processo judicial pelo juiz assessorado',
+				 },{
+				 	 text: '2.2.17. Revisão de processo judicial por outro juiz da Corte',
+				 },{
+				 	 text: '2.2.18. Decisões: despachos, decisões interlocutórias, sentenças de 1º Grau, decisões monocráticas e colegiadas',
+				 },
+				 ]
+		 	},{
+		 		text: '2.3 Processo: Consultas',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '2.3.1. Resposta a consultas (em tese) sobre matéria eleitoral',
+				 }
+				 ]
+		 	},{
+		 		text: '2.4. Processo: Normatização e Jurisprudência',
+			 	 backColor:'#D1EEEE',
+				 nodes: [ 
+				 {
+				 	 text: '2.4.1. Inclusão de Acórdãos e Resoluções no Sistema ITAR (Inteiro Teor de Acórdãos e Resoluções) ',
+				 },{
+				 	 text: '2.4.2. Elaboração do Informativo Eleitoral ',
+				 },{
+				 	 text: '2.4.3. Consolidação e compilação das normas administrativas do TRE/RN',
+				 },{
+				 	 text: '2.4.4. Elaboração do Boletim Eleitoral ',
+				 },{
+				 	 text: '2.4.5. Indexação e inclusão de Acórdãos e Resoluções no Sistema SJUR ',
+				 },{
+				 	 text: '2.4.6. Organização da Revista Eleitoral ',
+				 },{
+				 	 text: '2.4.7. Elaboração de ementários temáticos ',
+				 },{
+				 	 text: '2.4.8. Pesquisa à jurisprudência do TRE/RN e à Legislação Eleitoral ',
+				 },{
+				 	 text: '2.4.9. Validação no Módulo Interno do SGIP3 das propostas de anotação de órgãos partidários e de  delegados ',
+				 },{
+				 	 text: '2.4.10. Geração de certidões de apoiamento mínimo de eleitores no SAPF ',
+				 },{
+				 	 text: '2.4.11. Elaboração e análise de minutas de portarias e resoluções',
+				 },{
+				 	 text: '2.4.12. Pedido de ciência de ato normativo expedido por juiz eleitoral ',
+				 },{
+				 	 text: '2.4.13. Elaboração de atos normativos administrativos',
+				 },{
+				 	 text: '2.4.14. Expedição de ordens de serviço',
+				 },
+				 ]
+		 	},
+		 	]
+		},{
+			
+			text: '3. Macroprocesso Finalístico: Gestão do Cadastro de Eleitores',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+		 	{
+				text: '3.1. Processo: Alistamento Eleitoral',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '3.1.1. Inscrição/Transferência/Revisão eleitoral e 2ª via de título de eleitor',
+			 	},{
+			 		text: '3.1.2. Duplicidade/pluralidade de inscrição eleitoral: biográficas e biométricas',
+			 	},{
+			 		text: '3.1.3. Atendimento em postos descentralizados (Centrais do Cidadão e outros)',
+			 	},
+			 	]
+		 	},{
+				text: '3.2. Processo: Revisão do Eleitorado',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '3.2.1. Biometria ',
+			 	},{
+			 		text: '3.2.2. Instruções para revisão do eleitorado',
+			 	},{
+			 		text: '3.2.3. Rezoneamento',
+				 	backColor:'#D1EEEE',
+				 	nodes:[	{
+				 		text: '3.2.3.1. Atividades da SSAE no Rezoneamento',
+				 	}
+				 	]
+			 	},{
+			 		text: '3.2.4. Mudança de domicílio eleitoral',
+			 	},{
+			 		text: '3.2.5. Reemissão e expedição de novos títulos',
+			 	},{
+			 		text: '3.2.6. Providências administrativas relacionadas ao rezoneamento',
+			 	},
+			 	]
+		 	},{
+				text: '3.3. Processo: Manutenção do Cadastro',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '3.3.1. Gestão do banco de erros ',
+			 	},{
+			 		text: '3.3.2. Comunicação de óbito',
+			 	},{
+			 		text: '3.3.3. Controle de pendências do ELO ',
+			 	},{
+			 		text: '3.3.4. Certidões: crimes eleitorais, cadastro de perdas e suspensão de direitos políticos ',
+			 	},{
+			 		text: '3.3.5. Código ASE: atualização/retificação da situação do eleitor',
+			 	},{
+			 		text: '3.3.6. Filiação partidária ',
+			 	},{
+			 		text: '3.3.7. Fornecimento de dados cadastrais de eleitor a outros órgãos/Unidades',
+			 	},{
+			 		text: '3.3.8. Justificativa Eleitoral',
+			 	},{
+			 		text: '3.3.9. Suspensão e restabelecimento de direitos políticos e óbitos',
+			 	},
+			 	]
+		 	},{
+				text: '3.4. Processo: Zoneamento Eleitoral',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '3.4.1. Criação de Zona Eleitoral',
+			 	},{
+			 		text: '3.4.2. Extinção de Zona Eleitoral',
+			 	},
+			 	]
+		 	},
+		 	]
+		},{
+			
+			text: '4. Macroprocesso Finalístico: Responsabilidade Socioambiental e Acessibilidade',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+		 	{
+				text: '4.1. Processo: Educação para a Cidadania',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '4.1.1. Programa Eleitor do Futuro – Palestras e eventos: capital e interior ',
+			 	},{
+			 		text: '4.1.2. Programa Eleitor do Futuro – Eleições simuladas: capital e interior',
+			 	}
+			 	]
+		 	},{
+				text: '4.2. Processo: Acessibilidade',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '4.2.1. Elaboração do plano de ação observando as normas de acessibilidade vigentes ',
+			 	},{
+			 		text: '4.2.2. Celebração de parcerias com entidades representativas de pessoas com deficiência ',
+			 	},{
+			 		text: '4.2.3. Identificação de eleitores com deficiência ou mobilidade reduzida',
+			 	},{
+			 		text: '4.2.4. Adequação física dos locais de votação',
+			 	},{
+			 		text: '4.2.5. Adequação física dos prédios da Justiça Eleitoral do RN',
+			 	},{
+			 		text: '4.2.6. Capacitação de mesários e servidores sobre normas e requisitos de acessibilidade',
+			 	},{
+			 		text: '4.2.7. Elaboração e encaminhamento de relatório anual de acessibilidade ao TSE',
+			 	},{
+			 		text: '4.2.8. Campanhas institucionais voltadas ao eleitor com deficiência ou mobilidade reduzida',
+			 	},
+			 	]
+		 	},{
+				text: '4.3. Processo: Práticas Socioambientais',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '4.3.1. Gestão e implementação do Plano de Logística Sustentável  ',
+			 		backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '4.3.1.1. Elaboração do Plano de Logística Sustentável – PLS ',
+				 	}]
+			 	},{
+			 		text: '4.3.2. Monitoramento e avaliação do PLS',
+			 	}
+			 	]
+		 	},
+		 	]
+		},{
+			
+			text: '5. Macroprocesso de Gerenciamento e Governança: Governança',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+		 	{
+				text: '5.1. Processo: Governança',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '5.1.1. Governança Interna  ',
+				 	backColor:'#D1EEEE',
+				 	nodes:[	
+				 	{
+				 		text:'5.1.1.1. Gerenciamento do Sistema de Governança Interna',
+				 	},{
+				 		text:'5.1.1.2. Apoio à Governança Corporativa de TIC',
+				 	}
+				 	]
+			 	},{
+			 		text: '5.1.2. Governança Externa (TSE, CNJ e TCU)',
+			 	},{
+			 		text: '5.1.3. Transição de gestão',
+			 		backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '5.1.3.1. Elaboração do relatório de transição de gestão (Resolução CNJ nº 95/2009) ',
+				 	}]
+			 	}
+			 	]
+		 	},
+		 	]
+		},{
+			
+			text: '6. Macroprocesso de Gerenciamento e Governança: Gestão Estratégica',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+		 	{
+				text: '6.1. Processo: Gestão Estratégica',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '6.1.1. Planejamento Estratégico',
+
+			 	},{
+			 		text: '6.1.2. Desdobramento e execução da Estratégia',
+			 		backColor:'#D1EEEE',
+			 		nodes:[
+			 		{
+			 			text:'6.1.2.1. Elaboração e revisão do Plano de Gestão Setorial (Secretaria de Administração e Orçamento e Secretaria Judiciária)',
+			 		}]			 		
+			 	},{
+			 		text: '6.1.3. Plano Estratégico de Tecnologia da Informação e Comunicação (PETIC)',
+			 		backColor:'#D1EEEE',
+			 		nodes:[
+			 		{
+			 			text:'6.1.3.1. Elaboração e revisão do plano estratégico setorial (STIC)',
+			 		},{
+			 			text:'6.1.3.2. Elaboração do Plano Diretivo do TIC',
+			 		},{
+			 			text:'6.1.3.3. Solicitação de demandas de TIC - Alteração do Plano Diretivo de TIC',
+			 		},{
+			 			text:'6.1.3.4. Elaboração e Gestão do Plano de Contratações de TIC',
+			 		},{
+			 			text:'6.1.3.5. Mensuração do Desempenho de TIC',
+			 		},{
+			 			text:'6.1.3.6. Elaboração e Gestão do Plano de Capacitação de TIC',
+			 		},
+			 		]	
+			 	},{
+			 		text: '6.1.4. Plano Estratégico de Pessoas (PEP)',
+			 		backColor:'#D1EEEE',
+			 		nodes:[
+			 		{
+			 			text:'6.1.4.1. Elaboração e revisão do Plano Estratégico Setorial (PEP)',
+			 		}]	
+			 	},{
+			 		text: '6.1.5. Plano de Logística Sustentável (PLS)',
+			 	},{
+			 		text: '6.1.6. Plano de Comunicação da Estratégia',
+			 	},{
+			 		text: '6.1.7. Gestão e análise de dados estatísticos',
+			 	},{
+			 		text: '6.1.8. Painel de indicadores',
+			 	},{
+			 		text: '6.1.9. Metas do CNJ',
+			 	},{
+			 		text: '6.1.10. Justiça em Números - CNJ',
+			 	},{
+			 		text: '6.1.11. Plano de Aquisições e Contratações',
+			 		backColor:'#D1EEEE',
+			 		nodes:[
+			 		{
+			 			text:'6.1.11.1. Elaboração do Plano Anual de Contratações',
+			 		},{
+			 			text:'6.1.11.2. Monitoramento da execução do Plano Anual de Contratações',
+			 		},{
+			 			text:'6.1.11.3. Alteração do Plano Anual de Contratações',
+			 		},
+			 		]	
+			 	},{
+			 		text: '6.1.12. Plano de Obras',
+			 	},{
+			 		text: '6.1.13. Agenda do Presidente',
+			 	},{
+			 		text: '6.1.14. Agenda da Diretoria-Geral e das Secretarias',
+			 	},
+			 	]
+		 	},{
+		 		text: '6.2. Processo: Gestão de Processos',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '6.2.1. Desenvolvimento de ferramentas de gestão de processos',
+			 	},{
+			 		text: '6.2.2. Disseminação da cultura em Gestão por Processos',
+			 	},{
+			 		text: '6.2.3. Revisão da Metodologia de Gestão de Processos',
+			 	},{
+			 		text: '6.2.4. Mapeamento e Modelagem de Processos de Trabalho',
+			 	},{
+			 		text: '6.2.5. Acompanhamento e controle de melhorias dos Processos de Trabalho',
+			 	},
+			 	]
+		 	},{
+		 		text: '6.3. Processo: Gestão de Projetos',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'6.3.1. Disseminação e revisão da Metodologia em Gerenciamento de Projetos',
+			 	},{
+			 		text:'6.3.2. Elaboração e gerenciamento do Portfólio Institucional de Projetos Estratégicos',
+			 	},{
+			 		text:'6.3.3. Captação de inovações',
+			 	},{
+			 		text:'6.3.4. Gerenciamento dos Projetos Estratégicos',
+			 	},
+			 	]
+		 	},{
+		 		text: '6.4. Processo: Gestão Administrativa Sistêmica',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'6.4.1. Padronização da gestão administrativa',
+			 	},{
+			 		text:'6.4.2. Mensuração e monitoramento do desempenho',
+			 	},{
+			 		text:'6.4.3. Monitoramento do progresso de ações e projetos',
+			 	},
+			 	]
+		 	},{
+		 		text: '6.5. Processo: Comunicação Organizacional Externa',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'6.5.1. Acompanhamento de entrevistas',
+			 	},{
+			 		text:'6.5.2. Atendimento a jornalistas',
+			 	},{
+			 		text:'6.5.3. Cerimonial',
+			 	},{
+			 		text:'6.5.4. Planejamento e organização de cerimônias',
+			 	},{
+			 		text:'6.5.5. Planejamento e organização de eventos',
+			 	},{
+			 		text:'6.5.6. Produção de conteúdo jornalístico',
+			 	},{
+			 		text:'6.5.7. Releases',
+			 	},{
+			 		text:'6.5.8. Site',
+			 	},{
+			 		text:'6.5.9. Facebook',
+			 	},{
+			 		text:'6.5.10. Twitter',
+			 	},{
+			 		text:'6.5.11. Whatsapp',
+			 	},{
+			 		text:'6.5.12. Youtube',
+			 	},{
+			 		text:'6.5.13. Internet',
+			 	},{
+			 		text:'6.5.14. Publicidade institucional',
+			 	},{
+			 		text:'6.5.15. Criação de cartazes e imagens para mídia indoor',
+			 	},{
+			 		text:'6.5.16. Criação de marcas para projetos e campanhas de comunicação ',
+			 	},{
+			 		text:'6.5.17. Gestão de campanhas publicitárias',
+			 	},
+			 	]
+		 	},{
+		 		text: '6.6. Processo: Comunicação Organizacional Interna',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'6.6.1. Clipping de notícias',
+			 	},{
+			 		text:'6.6.2. Mídia indoor (TVs e Murais físicos)',
+			 	},{
+			 		text:'6.6.3. Produção de conteúdo para a Intranet',
+			 	},{
+			 		text:'6.6.4. Comunicados',
+			 	},
+			 	]
+		 	},{
+		 		text: '6.7. Processo: Ouvidoria Eleitoral',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'6.7.1. Atendimento às manifestações dirigidas à Ouvidoria Eleitoral',
+			 	},{
+			 		text:'6.7.2. Revisão das Cartas de Serviços',
+			 	},{
+			 		text:'6.7.3. Pesquisa de satisfação de Cliente Externo',
+			 	},
+			 	]
+		 	},{
+		 		text: '6.8. Processo: Segurança Judiciária',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'6.8.1. Segurança institucional',
+			 	},{
+			 		text:'6.8.2. Supervisão das atividades de inteligência e de segurança das informações',
+			 	},{
+			 		text:'6.8.3. Gestão da segurança da informação',
+			 	},			 	
+			 	]
+		 	},
+		 	]
+		},{
+			
+			text: '7. Macroprocesso de Gerenciamento e Governança: Correição',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+		 	{
+		 		text: '7.1. Processo: Correição',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'7.1.1. Correição anual obrigatória realizada pelo Juízo Eleitoral',
+			 	},{
+			 		text:'7.1.2. Acompanhamento das correições pela CRE',
+			 	},{
+			 		text:'7.1.3. Correição extraordinária realizada nas zonas eleitorais pela CRE',
+			 	},{
+			 		text:'7.1.4. Atendimento das demandas provenientes das correições',
+			 	},{
+			 		text:'7.1.5. Fiscalização, orientação e suporte às Zonas Eleitorais',
+			 	},				 	
+			 	]
+		 	},
+		 	]
+		},{
+			
+			text: '8. Macroprocesso de Gerenciamento e Governança: Transparência e Controle',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+		 	{
+		 		text: '8.1. Processo: Transparência e Accontability',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'8.1.1. Transparência e Acesso a Informação',
+			 	},{
+			 		text:'8.1.2. Relatório anual de gestão – TCU',
+			 		backColor:'#D1EEEE',
+			 		nodes:[
+			 		{
+			 			text:'8.1.2.1. Elaboração e consolidação do Relatório de Gestão do TCU',
+			 		}
+			 		]
+			 	},{
+			 		text:'8.1.3. Relatório de gestão fiscal ',
+			 	},{
+			 		text:'8.1.4. Publicações no Diário Judiciário Eletrônico – DJE',
+			 	},{
+			 		text:'8.1.5. Publicação no Diário Oficial da União - DOU ',
+			 	},{
+			 		text:'8.1.6. Publicação de matérias em jornal de grande circulação no Estado do RN',
+			 	},{
+			 		text:'8.1.7. Atendimento às demandas e diligências de órgãos externos (CNJ, TCU e AGU) ',
+			 	},					 	
+			 	]
+		 	},{
+		 		text: '8.2. Processo: Gestão de Riscos',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'8.2.1. Estabelecimento do contexto e do escopo de riscos',
+			 	},{
+			 		text:'8.2.2. Identificação dos riscos',
+			 	},{
+			 		text:'8.2.3. Análise e avaliação dos riscos',
+			 	},{
+			 		text:'8.2.4. Tratamento dos riscos',
+			 	},{
+			 		text:'8.2.5. Comunicação dos riscos',
+			 	},{
+			 		text:'8.2.6. Monitoramento dos riscos',
+			 	},{
+			 		text:'8.3.7. Avaliação do sistema de gestão de riscos e controles internos',
+			 	},					 	
+			 	]
+		 	},{
+		 		text: '8.3. Processo: Auditoria Interna',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'8.4.1. Planejamento do plano plurianual de auditoria ',
+			 	},{
+			 		text:'8.4.2. Planejamento anual de auditoria ',
+			 	},{
+			 		text:'8.4.3. Execução de auditorias',
+			 	},{
+			 		text:'8.4.4. Monitoramento das recomendações de auditoria ',
+			 	},{
+			 		text:'8.4.5. Cumprimento das recomendações de auditoria e controle ',
+			 	},{
+			 		text:'8.4.6. Elaboração de relatório de auditoria de gestão  ',
+			 	},{
+			 		text:'8.4.8. Tomada de contas especial',
+			 	},				 	
+			 	]
+		 	},
+		 	]
+		},{
+			
+			text: '9. Macroprocesso de Suporte: Gestão de Pessoas',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+		 	{
+		 		text: '9.1. Processo: Captação, Seleção e Alocação de Pessoas',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'9.1.1. Concurso público',
+			 	},{
+			 		text:'9.1.2. Nomeação de servidor efetivo',
+			 	},{
+			 		text:'9.1.3. Posse e entrada em exercício ',
+			 	},{
+			 		text:'9.1.4. Nomeação/designação de servidor para cargo ou função comissionada',
+				 	backColor:'#D1EEEE',
+				 	nodes:[			 		
+				 	{
+				 		text:'9.1.4.1. Indicação para Titularidade de Cargo em Comissão e Função Comissionada',
+				 	},{
+				 		text:'9.1.4.2. Seleção interna para ocupação de cargo ou função comissionada',
+				 	},
+				 	]
+			 	},{
+			 		text:'9.1.5. Seleção interna para ocupação de cargo ou função comissionada',
+			 	},{
+			 		text:'9.1.6. Lotação de servidor',
+			 	},{
+			 		text:'9.1.7. Ambientação de novos servidores',
+			 	},{
+			 		text:'9.1.8. Mapeamento de competências',
+			 	},{
+			 		text:'9.1.9. Readaptação de servidor',
+			 	},{
+			 		text:'9.1.10. Reintegração de servidor ao cargo anteriormente ocupado',
+			 	},{
+			 		text:'9.1.11. Recondução de servidor ao cargo de origem',
+			 	},{
+			 		text:'9.1.12. Vacância de cargo público',
+			 	},{
+			 		text:'9.1.13. Desligamento de servidor ocupante de cargo ou função comissionada',
+			 	},{
+			 		text:'9.1.14. Remoção de servidor ex-officio',
+			 	},{
+			 		text:'9.1.15. Remoção de servidor para acompnhar cônjuge',
+			 	},{
+			 		text:'9.1.16. Remoção de servidor por motivo de saúde',
+			 	},{
+			 		text:'9.1.17. Remoção de servidor por permuta',
+			 	},{
+			 		text:'9.1.18. Concurso de Remoção',
+			 	},{
+			 		text:'9.1.19. Redistribuição de servidor',
+			 	},{
+			 		text:'9.1.20. Requisição de pessoal (inicial, prorrogação, devolução e conversão)',
+				 	backColor:'#D1EEEE',
+			 		nodes:[
+			 		{
+			 			text: '9.1.20.1. Requisição de Pessoal – Inicial',
+			 		},{
+			 			text: '9.1.20.2. Requisição de Pessoal – Prorrogação',
+			 		},{
+			 			text: '9.1.20.3. Requisição de Pessoal - Devolução',
+			 		},
+			 		]
+			 	},{
+			 		text:'9.1.21. Cessão de servidor ',
+			 	},{
+			 		text:'9.1.22. Substituição de pessoal',
+			 	},{
+			 		text:'9.1.23. Registro e controle de informações funcionais de Membros da Corte, Juízes Eleitorais e Promotores Eleitorais',
+			 	},{
+			 		text:'9.1.24. Controle de rodízio de biênio de Juízes ',
+			 	},{
+			 		text:'9.1.25. Expedição de identidade funcional ',
+			 	},{
+			 		text:'9.1.26. Declarações de bens e renda',
+			 	},{
+			 		text:'9.1.27. Oficial de Justiça',
+			 	},{
+			 		text:'9.1.28. Designação de servidores para comissões permanentes e temporárias, comitês, grupos de trabalho, grupos de estudo, equipes de projetos e equipe única de Pregão ',
+			 	},{
+			 		text:'9.1.29. Designação e dispensa de servidor para as Centrais do Cidadão ',
+			 	},{
+			 		text:'9.1.30. Estágio Supervisionado',
+				 	backColor:'#D1EEEE',
+			 		nodes:[
+			 		{
+			 			text:'9.1.30.1. Processo seletivo dos estagiários',
+			 		},{
+			 			text:'9.1.30.2. Supervisão dos estagiários',
+			 		},{
+			 			text:'9.1.30.3. Pagamento de estagiários',
+			 		},
+			 		]			 		
+			 	},{
+			 		text:'9.1.31. Serviço voluntário',
+			 	},{
+			 		text:'9.1.32. Trabalho a distância (teletrabalho)',
+				 	backColor:'#D1EEEE',
+			 		nodes:[
+			 		{
+			 			text:'9.1.32.1.  Teletrabalho – Autorização',
+			 		},{
+			 			text:'9.1.32.2.  Teletrabalho – Gerenciamento',
+			 		},{
+			 			text:'9.1.32.3.  Teletrabalho – Suspensão',
+			 		},
+			 		]			 		
+			 	},{
+			 		text:'9.1.33. Dimensionamento da força de trabalho',
+			 	},{
+			 		text:'9.1.34. Força-Tarefa: designação temporária de servidores',
+			 	},{
+			 		text:'9.1.35. Acumulação de cargos públicos',
+			 	},{
+			 		text:'9.1.36. Alteração de cargos e funções comissionadas',
+			 	},{
+			 		text:'9.1.37. Admissão, desligamento e aposentadoria: Lançamento no SISAC/TCU',
+			 	},						 	
+			 	]
+		 	},{
+		 		text: '9.2. Processo: Serviços de pessoal',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'9.2.1. Vencimento e Remuneração',
+			 	},{
+			 		text:'9.2.2. Ajuda de custo',
+			 	},{
+			 		text:'9.2.3. Diárias (servidores, magistrados e colaboradores)',
+			 	},{
+			 		text:'9.2.4. Indenização de Transporte',
+			 	},{
+			 		text:'9.2.5. Concessão de passagens aéreas',
+			 	},{
+			 		text:'9.2.6. Ressarcimento de passagens',
+			 	},{
+			 		text:'9.2.7. Auxílio moradia',
+			 	},{
+			 		text:'9.2.8. Adicional por tempo de serviço',
+			 	},{
+			 		text:'9.2.9. Adicional de Insalubridade, Periculosidade e Atividades Penosas',
+			 	},{
+			 		text:'9.2.10. Adicional noturno',
+			 	},{
+			 		text:'9.2.11. Adicional de Qualificação',
+			 	},{
+			 		text:'9.2.12. Gratificação Natalina',
+			 	},{
+			 		text:'9.2.13. Férias ',
+			 	},{
+			 		text:'9.2.14. Serviço extraordinário',
+			 	},{
+			 		text:'9.2.15. Controle de frequência',
+			 	},{
+			 		text:'9.2.16. Gerenciamento do ponto eletrônico ',
+			 	},{
+			 		text:'9.2.17. Controle do banco de horas',
+			 	},{
+			 		text:'9.2.18. Solicitação de folga',
+			 	},{
+			 		text:'9.2.19. Jornada de Trabalho',
+			 	},{
+			 		text:'9.2.20. Licença por motivo de doença em pessoa da família',
+			 	},{
+			 		text:'9.2.21. Licença por motivo de afastamento do cônjuge ou companheiro',
+			 	},{
+			 		text:'9.2.22. Licença para o serviço militar',
+			 	},{
+			 		text:'9.2.23. Licença para tratar de interesse particular',
+			 	},{
+			 		text:'9.2.24. Licença para desempenho de mandato classista',
+			 	},{
+			 		text:'9.2.25. Afastamento para doação de sangue',
+			 	},{
+			 		text:'9.2.26. Afastamento para alistamento ou recadastramento eleitoral',
+			 	},{
+			 		text:'9.2.27. Afastamento em razão de casamento',
+			 	},{
+			 		text:'9.2.28. Afastamento por motivo de falecimento de pessoas da família ',
+			 	},{
+			 		text:'9.2.29. Afastamento para participar de curso de formação',
+			 	},{
+			 		text:'9.2.30. Concessão de elogio a servidor',
+			 	},{
+			 		text:'9.2.31. Aplicação de penalidade a servidor',
+			 	},{
+			 		text:'9.2.32. Sindicância',
+			 	},{
+			 		text:'9.2.33. Processo administrativo disciplinar',
+			 	},{
+			 		text:'9.2.34. Plano de Seguridade Social: benefícios para o servidor',
+			 	},{
+			 		text:'9.2.35. Aposentadoria',
+			 	},{
+			 		text:'9.2.36. Aposentadoria: reversão',
+			 	},{
+			 		text:'9.2.37. Averbação de tempo de serviço/contribuição',
+			 	},{
+			 		text:'9.2.38. Abono de permanência',
+			 	},{
+			 		text:'9.2.39. Auxílio-natalidade',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'9.2.39.1. Inclusão do auxílio-natalidade',
+				 	}
+				 	]			 		
+			 	},{
+			 		text:'9.2.40. Auxílio-pré-escolar',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'9.2.40.1. Inclusão do auxílio pré-escolar',
+				 	},{
+				 		text:'9.2.40.2. Exclusão do auxílio pré-escolar',
+				 	}
+				 	]			 		
+			 	},{
+			 		text:'9.2.41. Auxílio-transporte',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'9.2.41.1. Inclusão do auxílio transporte',
+				 	},{
+				 		text:'9.2.41.2. Exclusão do auxílio transporte',
+				 	},{
+				 		text:'9.2.41.3. Conferência do auxílio transporte',
+				 	},
+				 	]			 		
+			 	},{
+			 		text:'9.2.42. Auxílio-alimentação',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'9.2.42.1. Inclusão do auxílio-alimentação',
+				 	},{
+				 		text:'9.2.42.2. Exclusão do auxílio-alimentação',
+				 	},{
+				 		text:'9.2.42.3. Suspensão do auxílio-alimentação',
+				 	},
+				 	]			 		
+			 	},{
+			 		text:'9.2.43. Licença à gestante',
+			 	},{
+			 		text:'9.2.44. Licença à adotante',
+			 	},{
+			 		text:'9.2.45. Licença paternidade',
+			 	},{
+			 		text:'9.2.46. Plano de Seguridade Social: benefícios para o dependente de servidor',
+			 	},{
+			 		text:'9.2.47. Pensão civil',
+			 	},{
+			 		text:'9.2.48. Auxílio-Funeral',
+			 	},{
+			 		text:'9.2.49. Auxílio-Reclusão',
+			 	},{
+			 		text:'9.2.50. Gestão do Programa Complementar de Assistência à Saúde – PCAS ',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'9.2.50.1. Inclusão no Programa Complementar de Assistência à Saúde - PCAS',
+				 	},{
+				 		text:'9.2.50.2. Migração do módulo entidade para o particular do Programa Complementar de Assistência à Saúde - PCAS',
+				 	},{
+				 		text:'9.2.50.3. Migração do módulo particular para a entidade do Programa Complementar de Assistência à Saúde - PCAS',
+				 	},{
+				 		text:'9.2.50.4. Implantação de benefício',
+				 	},{
+				 		text:'9.2.50.5. Exclusão por desligamento do Programa Complementar de Assistência à Saúde - PCAS',
+				 	},{
+				 		text:'9.2.50.6. Exclusão a pedido do Programa Complementar de Assistência à Saúde - PCAS',
+				 	},{
+				 		text:'9.2.50.7. Exclusão do Programa Complementar de Assistência à Saúde - PCAS',
+				 	},{
+				 		text:'9.2.50.8. Atualização dos valores do módulo Entidade de Classe do Programa Complementar de Assistência à Saúde - PCAS',
+				 	},{
+				 		text:'9.2.50.9. Comprovação de pagamento de plano de saúde da modalidade particular do Programa Complementar de Assistência à Saúde – PCAS',
+				 	},
+				 	]								 		
+			 	},{
+			 		text:'9.2.51. Folha de Pagamento: Servidores',
+			 	},{
+			 		text:'9.2.52. Folha de pagamento: Membros da corte, Juízes e Promotores Eleitorais ',
+			 	},{
+			 		text:'9.2.53. Implantação e controle de decisões judiciais: pensão alimentícia e outros reflexos na folha de pagamento',
+			 	},{
+			 		text:'9.2.54. Pagamento indevido e reposição ao Erário',
+			 	},{
+			 		text:'9.2.55. Controle das consignações e descontos efetuados nas folhas de pagamento',
+			 	},{
+			 		text:'9.2.56. Elaboração e envio de informações a órgãos externos ',
+			 	},{
+			 		text:'9.2.57. Gerenciamento do Sistema de Gestão de Recursos Humanos – SGRH ',
+			 	},					 	
+			 	]
+		 	},{
+		 		text: '9.3. Processo: Gestão do Desenvolvimento',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'9.3.1. Avaliação de desempenho com foco em competências',
+			 	},{
+			 		text:'9.3.2. Estágio probatório',
+			 	},{
+			 		text:'9.3.3. Movimentação funcional',
+			 	},{
+			 		text:'9.3.4. Licença para Capacitação ',
+			 	},{
+			 		text:'9.3.5. Afastamento para participação em programa de Pós-Graduação Strictu Sensu no País',
+			 	},{
+			 		text:'9.3.6. Adicional de Qualificação ',
+			 		backColor:'#D1EEEE',
+			 		nodes:[
+			 		{
+			 			text:'9.3.6.1. Adicional de Qualificação - Ações de Treinamento',
+			 		},{
+			 			text:'9.3.6.2. Adicional de Qualificação - Pós-Graduação',
+			 		},{
+			 			text:'9.3.6.3. Adicional de Qualificação - Técnico Judiciário/Graduação',
+			 		},
+			 		]
+			 	},{
+			 		text:'9.3.7. Licença-prêmio por assiduidade',
+			 	},{
+			 		text:'9.3.8. Banco de Talentos ',
+			 	},{
+			 		text:'9.3.9. Eventos Externos ',
+			 	},{
+			 		text:'9.3.10. Formação e aperfeiçoamento de servidor/modalidade EAD e presencial ',
+			 		backColor:'#D1EEEE',
+			 		nodes:[
+			 		{
+			 			text:'9.3.10.1. Realização de ação de formação e aperfeiçoamento',
+			 		}
+			 		]			 		
+			 	},{
+			 		text:'9.3.11. Auxílio-Bolsa',
+			 	},{
+			 		text:'9.3.12. Instrutoria Interna',
+			 	},				 	
+			 	]
+		 	},{
+		 		text: '9.4. Processo: Promoção de Saúde e da Qualidade de Vida no Trabalho',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'9.4.1. Atendimento médico ',
+			 	},{
+			 		text:'9.4.2. Atendimento odontológico ',
+			 	},{
+			 		text:'9.4.3. Exames admissionais e demissionais',
+			 	},{
+			 		text:'9.4.4. Exames periódicos',
+			 	},{
+			 		text:'9.4.5. Gestão de materiais médicos e odontológicos',
+			 	},{
+			 		text:'9.4.6. Gestão do Programa de Qualidade de Vida no Trabalho ',
+			 	},{
+			 		text:'9.4.7. Licença para tratamento da própria saúde',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'9.4.7.1 Tratamento da própria saúde',
+				 	},{
+				 		text:'9.4.7.2. Acompanhamento de familiar',
+				 	},{
+				 		text:'9.4.7.3. Liberação médica',
+				 	},
+				 	]			 		
+			 	},{
+			 		text:'9.4.8. Licença por motivo de acidente em serviço ou doença profissional',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'9.4.8.1. Acidente de trabalho',
+				 	}
+				 	]		 		
+			 	},{
+			 		text:'9.4.9. Planejamento e fiscalização de contratos e convênios (no âmbito da SAMS)',
+			 	},{
+			 		text:'9.4.10. Realização de ações de promoção e prevenção em saúde',
+			 	},{
+			 		text:'9.4.11. Realização de perícias médicas (junta médica)',
+			 	},		 	
+			 	]
+		 	},
+		 	]
+		},{
+			
+			text: '10. Macroprocesso de Suporte: Gestão de Tecnologia da Informação e Comunicação',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+		 	{
+		 		text: '10.1. Processo: Gerenciamento de Serviços de TIC',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text:'10.1.1. Administração de banco de dados',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'10.1.1.1. Gerenciamento de cópias de segurança (backup) e de Restauração de dados',
+				 	},
+				 	]
+			 	},{
+			 		text:'10.1.2. Atualização do parque computacional',
+			 	},{
+			 		text:'10.1.3. Controle de licenças de software',
+			 	},{
+			 		text:'10.1.4. Funcionamento da Central de Serviços de TIC',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'10.1.4.1. Gerenciamento da Central de Serviços de TIC',
+				 	}
+				 	]			 		
+			 	},{
+			 		text:'10.1.5. Gerenciamento da Base de Usuários',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'10.1.5.1. Gerenciamento de Controle de Acesso Lógico',
+				 	}
+				 	]			 		
+			 	},{
+			 		text:'10.1.6. Gerenciamento da Rede de Comunicação de Dados',
+			 	},{
+			 		text:'10.1.7. Gerenciamento de eventos de TIC',
+			 	},{
+			 		text:'10.1.8. Gerenciamento de incidentes de TIC',
+			 	},{
+			 		text:'10.1.9. Gerenciamento de liberações e implantações de TIC',
+			 	},{
+			 		text:'10.1.10. Gerenciamento de mudanças de TIC',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'10.1.10.1. Gerenciamento de Acordo de Níveis de Serviços Essenciais de TIC',
+				 	},{
+				 		text:'10.1.10.2. Monitoramento e Aferição de Acordo de Níveis de Serviços Essenciais de TIC',
+				 	}
+				 	]				 		
+			 	},{
+			 		text:'10.1.11. Gerenciamento de problemas de TIC',
+			 	},{
+			 		text:'10.1.12. Gerenciamento de requisições de serviços de TIC',
+			 	},{
+			 		text:'10.1.13. Gerenciamento do Catálogo de Serviços de TIC',
+			 	},{
+			 		text:'10.1.14. Gerenciamento dos sítios eletrônicos',
+			 	},{
+			 		text:'10.1.15. Suporte na publicação de conteúdo nos sítios eletrônicos',
+			 	},{
+			 		text:'10.1.16. Alimentação da página da Intranet e Internet quanto a dados de exercício, cargo e foto dos Membros da Corte',
+			 	},{
+			 		text:'10.1.17. Atualização de dados na página eletrônica da Biblioteca',
+			 	},{
+			 		text:'10.1.18. Atualização de dados na página eletrônica da Corregedoria',
+			 	},{
+			 		text:'10.1.19. Gestão dos ativos de configuração de TIC',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'10.1.19.1. Gerenciamento de Configurações e Ativos de TIC',
+				 	}
+				 	]			 		
+			 	},{
+			 		text:'10.1.20. Gerenciamento de plataformas e sistemas informatizados',
+			 	},{
+			 		text:'10.1.21. Gerenciamento do ODIN ',
+			 	},{
+			 		text:'10.1.22. Gerenciamento do Sistema de Informações Eleitorais – SIEL',
+			 	},{
+			 		text:'10.1.23. Implantação de sistemas administrativos e judiciários',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'10.1.23.1. Implantação de sistemas internos',
+				 	},{
+				 		text:'10.1.23.2. Implantação de sistemas externos',
+				 	},{
+				 		text:'10.1.23.3. Gerenciamento de Liberação e Implantação de TIC',
+				 	},{
+				 		text:'10.1.23.4. Atendimento ao PJe - Problemas Técnicos',
+				 	},
+				 	]			 		
+			 	},{
+			 		text:'10.1.24. Manutenção de equipamentos de informática (Preventiva e Corretiva) 	',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'10.1.24.1. Manutenção Corretiva de Equipamento de Informática',
+				 	},{
+				 		text:'10.1.24.2. Manutenção Preventiva de Equipamento de Informática',
+				 	}
+				 	]			 		
+			 	},{
+			 		text:'10.1.25. Suporte técnico em eventos internos e externos',
+			 	},{
+			 		text:'10.1.26. Aceite de urnas eletrônicas ',
+			 	},{
+			 		text:'10.1.27. Armazenamento de urnas eletrônicas',
+			 	},{
+			 		text:'10.1.28. Armazenamento de mídias, lacres, peças e suprimentos',
+			 	},{
+			 		text:'10.1.29. Manutenção preventiva e corretiva de urna eletrônica',
+			 	},{
+			 		text:'10.1.30. Empréstimo e parametrização de UEs para eleições comunitárias',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text:'10.1.30.1. Eleições comunitárias',
+				 	}
+				 	]			 		
+			 	},		 	
+			 	]
+		 	},{
+		 		text:'10.2. Processo: Gerenciamento do Desenvolvimento de Soluções',
+			 	backColor:'#D1EEEE',
+			    nodes:[
+				{
+					text:'10.2.1. Desenvolvimento de sistemas administrativos',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'10.2.1.1. Gerenciamento de solução de software – ciclo de vida',
+					},{
+						text:'10.2.1.2. Gerenciamento de escopo e requisitos',
+					},{
+						text:'10.2.1.3. Desenvolvimento de software',
+					},{
+						text:'10.2.1.4. Gerenciamento de arquitetura de software',
+					},{
+						text:'10.2.1.5. Solicitação de demandas de sistemas',
+					},
+					]
+				},{
+					text:'10.2.2. Manutenção de sistemas administrativos',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'10.2.2.1.  Sustentação de sistemas',
+					}
+					]
+				},
+				]		 		
+		 	},{
+		 		text:'10.3. Processo: Gerenciamento da Disponibilidade e da Capacidade',
+			 	backColor:'#D1EEEE',
+			    nodes:[
+				{
+					text:'10.3.1. Gestão de disponibilidade e da capacidade',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'10.3.1.1. Gerenciamento da Capacidade de TIC',
+					},{
+						text:'10.3.1.2. Gerenciamento da Disponibilidade de TIC',
+					},{
+						text:'10.3.1.3. Gerenciamento de Cópias de Segurança (Backup) e de Restauração de Dados',
+					},
+					]
+				},
+				]		 		
+		 	},{
+		 		text:'10.4. Processo: Gerenciamento da Continuidade',
+			 	backColor:'#D1EEEE',
+			    nodes:[
+				{
+					text:'10.4.1. Gestão da continuidade dos serviços de TIC',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'10.4.1.1. Gerenciamento de Continuidade de Serviços Essenciais de TIC',
+					}
+					]
+				}
+				]		 		
+		 	},{
+		 		text:'10.5. Processo: Gerenciamento da Segurança de TIC',
+			 	backColor:'#D1EEEE',
+			    nodes:[
+				{
+					text:'10.5.1. Gestão da segurança da informação e comunicação',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'10.5.1.1. Elaboração, acompanhamento e revisão da Política de Segurança da Informação do TRE-RN',
+					},{
+						text:'10.5.1.2. Gerenciamento de incidentes de segurança da informação',
+					},{
+						text:'10.5.1.3. Gestão de Riscos da Segurança da Informação',
+					},
+					]
+				},{
+					text:'10.5.2. Gestão dos riscos associados à TIC',
+				},
+				]		 		
+		 	},
+		 	]
+		},{
+			
+			text: '11. Macroprocesso de Suporte: Gestão Orçamentária, Financeira e Contábil',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+			{
+				text:'11.1. Processo: Gestão Orçamentária',
+			 	backColor:'#D1EEEE',
+			    nodes:[
+				{
+					text:'11.1.1. Planejamento do orçamento anual do TRE ',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.1.1.1. Sistema de Planejamento e Gestão Orçamentária - PGO',
+					}
+					]
+				},{
+					text:'11.1.2. Gerenciamento e controle orçamentário e financeiro',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.1.2.1. Controle orçamentário - Pessoal e benefícios',
+					},{
+						text:'11.1.2.2. Controle orçamentário - Custeio e Investimentos',
+					},{
+						text:'11.1.2.3. Controle de saldos e reserva orçamentária',
+					},{
+						text:'11.1.2.4. Programa Orçamento Participativo',
+					},{
+						text:'11.1.2.5. Preparação de reuniões do COGEO',
+					},
+					]
+				},{
+					text:'11.1.3. Elaboração da proposta orçamentária anual',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.1.3.1. Metodologia e parâmetros',
+					},{
+						text:'11.1.3.2. Coleta das necessidades e informações',
+					},{
+						text:'11.1.3.3. Análise e ajuste da proposta',
+					},
+					]
+				},{
+					text:'11.1.4. Coordenação e definição das ações estratégicas',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.1.4.1. Identificação e cadastramento de ações estratégicas orçamentárias',
+					},{
+						text:'11.1.4.2. Definição das ações estratégicas orçamentárias',
+					},
+					]
+				},{
+					text:'11.1.5. Pedido de crédito adicional',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.1.5.1. Crédito Suplementar',
+					},{
+						text:'11.1.5.2. Crédito Especial',
+					},
+					]
+				},{
+					text:'11.1.6. Pedido de descentralização de créditos',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.1.6.1. Descentralização interna',
+					},{
+						text:'11.1.6.2. Termo de execução descentralizada',
+					},
+					]
+				},{
+					text:'11.1.7. Detalhamento das despesas e informação de reserva orçamentária',
+				},{
+					text:'11.1.8. Cadastro de usuários no SIAFI',
+					backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.1.8.1. Cadastro de usuários do SIAFI',
+					}
+					]					
+				},{
+					text:'11.1.9. Empenho de despesa: emissão, reforço, anulação e cancelamento',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.1.9.1. Emissão, reforço e anulação de empenhos',
+					},{
+						text:'11.1.9.2. Cancelamento de Restos a Pagar',
+					},
+					]
+				},{
+					text:'11.1.10. Liquidação de despesa pública',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.1.10.1. Serviços em geral',
+					},{
+						text:'11.1.10.2. Bens patrimoniais',
+					},{
+						text:'11.1.10.3. Materiais de consumo',
+					},{
+						text:'11.1.10.4. Contratos',
+					},
+					]
+				},{
+					text:'11.1.11. Apropriação e pagamento das folhas de pessoal',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.1.11.1. Apropriação das folhas de pessoal (normal e suplementares)',
+					},{
+						text:'11.1.11.2. Pagamento das folhas de pessoal (normal e suplementares)',
+					},
+					]
+				},
+				]
+			},{
+				text:'11.2. Processo: Gestão Financeira',
+			 	backColor:'#D1EEEE',
+			    nodes:[
+				{
+					text:'11.2.1. Programação Financeira',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.2.1.1. Registro da programação financeira',
+					},{
+						text:'11.2.1.2. Recebimento e controle de recursos financeiros',
+					},
+					]
+				},{
+					text:'11.2.2. Pagamento de despesas e fornecedores contratados pelo TRE/RN',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.2.2.1. Pagamento de fornecedores contratados',
+					},{
+						text:'11.2.2.2. Pagamento de outras despesas',
+					},
+					]
+				},{
+					text:'11.2.3. Reconhecimento de despesas de exercícios anteriores ',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.2.3.1. Despesas de Exercícios Anteriores - custeio e investimentos',
+					},{
+						text:'11.2.3.2. Despesas de Exercícios Anteriores - Pessoal',
+					},
+					]
+				},{
+					text:'11.2.4. Recolhimento de impostos e tributos',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.2.4.1. Recolhimentos federais',
+					},{
+						text:'11.2.4.2. Recolhimentos estaduais',
+					},{
+						text:'11.2.4.3. Recolhimentos municipais',
+					},
+					]
+				},{
+					text:'11.2.5. Consulta e regularização perante órgãos de fiscalização',
+				},
+				]
+			},{
+				text:'11.3. Processo: Análise e Conformidade Contábil',
+			 	backColor:'#D1EEEE',
+			    nodes:[
+				{
+					text:'11.3.1. Acompanhamento e registro de Despesas de Exercícios Anteriores e Restos a Pagar ',
+				},{
+					text:'11.3.2. Análise Contábil da Gestão Orçamentária, Financeira e Patrimonial ',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.3.2.1. Conferência e acertos contábeis',
+					},{
+						text:'11.3.2.2. Conformidade de registro de gestão',
+					},{
+						text:'11.3.2.3. Conformidade contábil',
+					},{
+						text:'11.3.2.4. Demonstrativos contábeis',
+					},
+					]					
+				},{
+					text:'11.3.3. Controle da Gestão Patrimonial dos Bens Móveis, Imóveis e de Materiais de Consumo ',
+				},{
+					text:'11.3.4. Dívida Ativa da União / CADIN / TCU',
+				},{
+					text:'11.3.5. Elaboração de relatórios e demonstrativos para compor a Prestação de Contas da Unidade Gestora',
+				},{
+					text:'11.3.6. Fechamento financeiro mensal',
+				},{
+					text:'11.3.7. Gestão Contábil de Liquidação de Pagamento de Despesas ',
+				},{
+					text:'11.3.8. Guia de Recolhimento à União - GRU',
+				},{
+					text:'11.3.9. Registro e Controle dos contratos no SIAFI ',
+				},{
+					text:'11.3.10. Controle de despesas com pagamento antecipado',
+				 	backColor:'#D1EEEE',
+				    nodes:[
+					{
+						text:'11.3.10.1. Suprimento de fundos',
+					},{
+						text:'11.3.10.2. Cartão corporativo',
+					},
+					]					
+				},
+				]
+			},		 	
+		 	]
+		},{
+			
+			text: '12. Macroprocesso de Suporte: Gestão de Aquisições, Contratações e Infraestrutura',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+		 	{
+				text: '12.1.Processo: Gestão de Aquisições, Licitações e Contratos',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+					text: '12.1.1. Processo licitatório: fase interna',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.1.1.1. Planejamento da contratação',
+				 	},{
+				 		text: '12.1.1.2. Análise técnica e pesquisa de preços',
+				 	},{
+				 		text: '12.1.1.3. Informações e repesquisa de preços em pregões',
+				 	},{
+				 		text: '12.1.1.4. Solicitações de troca de marca e realinhamento de preços',
+				 	},{
+				 		text: '12.1.1.5. Pesquisa de preços para análise de vantajosidade',
+				 	},{
+				 		text: '12.1.1.6. Modalidades de Licitação',
+				 	},{
+				 		text: '12.1.1.7. Editais de licitação',
+				 	},{
+				 		text: '12.1.1.8. Análise jurídica de editais e outros instrumentos',
+				 	},{
+				 		text: '12.1.1.9. Aprovação de instrumentos e abertura de processo licitatório',
+				 	},{
+				 		text: '12.1.1.10. Registro de Intenção de Registro de Preço - IRP',
+				 	},
+				 	]			 		
+			 	},{
+					text: '12.1.2. Processo licitatório: fase externa',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.1.2.1. Licitação Eletrônica',
+				 	},{
+				 		text: '12.1.2.2. Licitação Presencial',
+				 	},{
+				 		text: '12.1.2.3. Impugnações, questionamentos e recursos',
+				 	},{
+				 		text: '12.1.2.4. Fracassos e indeferimentos',
+				 	},{
+				 		text: '12.1.2.5. Análise, homologação e adjudicação',
+				 	},
+				 	]			 		
+			 	},{
+					text: '12.1.3. Aquisição ou contratação direta',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.1.3.1. Dispensa de licitação - procedimentos de instrução',
+				 	},{
+				 		text: '12.1.3.2. Dispensa de licitação com propostas comerciais',
+				 	},{
+				 		text: '12.1.3.3. Dispensa de licitação com cotação eletrônica',
+				 	},{
+				 		text: '12.1.3.4. Inexigibilidade de licitação',
+				 	},{
+				 		text: '12.1.3.5. Locação de imóveis',
+				 	},{
+				 		text: '12.1.3.6. Avaliação de pedido de troca em dispensa de licitação',
+				 	},
+				 	]			 		
+			 	},{
+					text: '12.1.4. Aquisição com adesão do TRE/RN à ARP de outro órgão',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.1.4.1. Procedimentos de adesão do TRE/RN à ARP de outro órgão',
+				 	},
+				 	]			 		
+			 	},{
+					text: '12.1.5. Adesão de outros órgãos à ARP do TRE/RN',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.1.5.1. Procedimentos de adesão de outros órgãos à ARP do TRE/RN',
+				 	},
+				 	]			 		
+			 	},{
+					text: '12.1.6. Formalização de contratos administrativos',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.1.6.1. Contratos administrativos, aditivos e apostilas',
+				 	},{
+				 		text: '12.1.6.2. Convênios, acordos de cooperação técnica e instrumentos afins',
+				 	},{
+				 		text: '12.1.6.3. Atas de registro de preço',
+				 	},
+				 	]			 		
+			 	},{
+					text: '12.1.7. Gestão de contratos administrativos',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.1.7.1. Controle dos pagamentos de despesas contratuais',
+				 	},{
+				 		text: '12.1.7.2. Prorrogação / repactuação / reajuste / reequilíbrio / aditivos de contratos',
+				 	},{
+				 		text: '12.1.7.3. Fiscalização de contratos',
+				 	},{
+				 		text: '12.1.7.4. Emissão de atestados de capacidade técnica',
+				 	},{
+				 		text: '12.1.7.5. Comunicação com licitantes e contratados',
+				 	},{
+				 		text: '12.1.7.6. Conferência de documentação trabalhista e previdenciária dos contratos',
+				 	},{
+				 		text: '12.1.7.7. Gestão da conta-depósito vinculada dos contratos',
+				 	},{
+				 		text: '12.1.7.8. Aplicação de penalidade à fornecedores',
+				 	},{
+				 		text: '12.1.7.9. Gestão de Atas de Registro de Preços – ARP',
+				 	},{
+				 		text: '12.1.7.10. Gestão de Contratos por Nota de Empenho',
+				 	},{
+				 		text: '12.1.7.11. Gestão sobre prazos de entrega / execução e substituição de materiais e serviços',
+				 	},{
+				 		text: '12.1.7.12. Realinhamento / reajuste de preços de fornecedores',
+				 	},{
+				 		text: '12.1.7.13. Processos anuais de gestão de contratos',
+				 	},{
+				 		text: '12.1.7.14. Emissão de informações sobre contratos / convênios / termos de parceria ',
+				 	},
+				 	]			 		
+			 	},
+			 	]		 		
+		 	},{
+				text: '12.2.Processo: Gestão Patrimonial',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '12.2.1. Gerenciamento e controle de material permanente',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.2.1.1. Transferências patrimoniais',
+				 	},{
+				 		text: '12.2.1.2. Recebimento de bens',
+				 	},{
+				 		text: '12.2.1.3. Devolução de bens',
+				 	},{
+				 		text: '12.2.1.4. Controle mensal de bens',
+				 	},{
+				 		text: '12.2.1.5. Inventário de bens patrimoniais',
+				 	},{
+				 		text: '12.2.1.6. Supervisão e controle dos bens patrimoniais',
+				 	},	
+				 	]		 		
+			 	},{
+			 		text: '12.2.2. Reavaliação de imóveis',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.2.2.1. Reavaliação de imóveis',
+				 	},		 
+				 	]		
+			 	},{
+			 		text: '12.2.3. Desfazimento de material permanente',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.2.3.1. Desfazimento de bens',
+				 	},
+				 	]		 		
+			 	},
+			 	]
+		 	},{
+		 		text: '12.3.Processo: Gestão de Materiais e Serviços',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+		 			text: '12.3.1. Gerenciamento e controle de material de consumo',	
+				 	backColor:'#D1EEEE',
+				 	nodes:[		 		
+				 	{
+				 		text: '12.3.1.1. Registro de entrada de materiais de consumo',
+				 	},{
+				 		text: '12.3.1.2. Requisição e distribuição de material de consumo',
+				 	},{
+				 		text: '12.3.1.3. Controle mensal de materiais de consumo',
+				 	},{
+				 		text: '12.3.1.4. Inventário de materiais de consumo',
+				 	},{
+				 		text: '12.3.1.5. Supervisão e controle materiais de consumo',
+				 	},{
+				 		text: '12.3.1.6. Desfazimento de materiais de consumo',
+				 	},{
+				 		text: '12.3.1.7. Consolidação de solicitações de aquisições de materiais de consumo',
+				 	},	
+				 	]	 		
+			 	},{
+		 			text: '12.3.2. Empréstimo de urnas de lona',	
+				 	backColor:'#D1EEEE',
+				 	nodes:[		
+				 	{
+				 		text:'12.3.2.1. Empréstimos de urnas de lona',
+				 	}
+				 	]
+			 	},{
+		 			text: '12.3.3. Gerenciamento e controle de serviços',	
+				 	backColor:'#D1EEEE',
+				 	nodes:[		
+				 	{
+				 		text:'12.3.3.1. Serviços de estocagem',
+				 	},{
+				 		text:'12.3.3.2. Pesagem de resíduos da coleta seletiva',
+				 	},{
+				 		text:'12.3.3.3. Fiscalização e gerenciamento de contrato de cessão de uso de sala',
+				 	},{
+				 		text:'12.3.3.4. Água e esgoto',
+				 	},{
+				 		text:'12.3.3.5. Vigilância eletrônica - capital (CFTV e COJE)',
+				 	},{
+				 		text:'12.3.3.6. Vigilância eletrônica - interior',
+				 	},{
+				 		text:'12.3.3.7. Vigilância armada - capital',
+				 	},{
+				 		text:'12.3.3.8. Serviço de recepcionistas',
+				 	},{
+				 		text:'12.3.3.9. Serviço de chaveiro',
+				 	},{
+				 		text:'12.3.3.10. Recarga de extintores de incêndio',
+				 	},{
+				 		text:'12.3.3.11. Combustíveis, lubrificantes, peças e serviços',
+				 	},{
+				 		text:'12.3.3.12. Lavagem, polimento e limpeza de veículos',
+				 	},{
+				 		text:'12.3.3.13. Manutenção de motocicletas',
+				 	},{
+				 		text:'12.3.3.14. Manutenção de veículos à gasolina/álcool',
+				 	},{
+				 		text:'12.3.3.15. Manutenção de veículos à diesel',
+				 	},{
+				 		text:'12.3.3.16. Motoristas e motociclistas',
+				 	},{
+				 		text:'12.3.3.17. Telefonia fixa',
+				 	},{
+				 		text:'12.3.3.18. Telefonia móvel',
+				 	},{
+				 		text:'12.3.3.19. Manutenção de equipamentos de ar condicionado e refrigeração',
+				 	},{
+				 		text:'12.3.3.20. Energia elétrica',
+				 	},{
+				 		text:'12.3.3.21. Serviços de copeiragem e garçons',
+				 	},{
+				 		text:'12.3.3.22. Lavagem de togas e cortinas',
+				 	},{
+				 		text:'12.3.3.23. Gerenciar e controlar as solicitações, conduções e devoluções de veículos',
+				 	},{
+				 		text:'12.3.3.24. Sinistros com veículos oficiais',
+				 	},{
+				 		text:'12.3.3.25. Infrações de trânsito',
+				 	},{
+				 		text:'12.3.3.26. Serviços contratados através de nota de empenho',
+				 	},{
+				 		text:'12.3.3.27. Gestão de suprimento de fundos',
+				 	},{
+				 		text:'12.3.3.28. Instrução e movimentação dos processos no PAE (serviços)',
+				 	},
+				 	]
+			 	},
+			 	]
+		 	},{
+		  		text: '12.4.Processo: Gestão da Infraestrutura Física',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+			 	{
+			 		text: '12.4.1. Vistoria e avaliação de imóveis',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.1.1. Vistorias em imóveis locados e de interesse da Justiça Eleitoral',
+				 	},{
+				 		text: '12.4.1.2. Vistorias para fins de manutenção',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.2. Regularização e construção de imóveis',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.2.1. Regularização de imóveis junto a SPU',
+				 	},{
+				 		text: '12.4.2.2. Construção de imóveis',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.3. Reforma e adaptação de imóveis',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.3.1. Reformas e adaptações de imóveis',
+				 	},{
+				 		text: '12.4.3.2. Adequação à Política Nacional de Inclusão das Pessoas com deficiência',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.4. Manutenção e conservação predial dos imóveis da capital',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.4.1. Limpeza e conservação - Capital',
+				 	},{
+				 		text: '12.4.4.2. Manutenção predial - Capital',
+				 	},{
+				 		text: '12.4.4.3. Serviço de carregadores',
+				 	},{
+				 		text: '12.4.4.4. Serviços de jardinagem',
+				 	},{
+				 		text: '12.4.4.5. Serviços de desinsetização, desratização e descupinização',
+				 	},{
+				 		text: '12.4.4.6. Descarte de entulho e resíduos de construção/reforma',
+				 	},{
+				 		text: '12.4.4.7. Manutenção de equipamentos - Capital',
+				 	},{
+				 		text: '12.4.4.8. Serviços especializados da área de engenharia - Capital',
+				 	},{
+				 		text: '12.4.4.9. Instrução e movimentação dos processos no PAE (manutenção e conservação predial) - Capital',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.5. Manutenção e conservação predial dos Cartórios Eleitorais do interior do RN',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.5.1. Limpeza e conservação - Interior',
+				 	},{
+				 		text: '12.4.5.2. Manutenção predial - Interior',
+				 	},{
+				 		text: '12.4.5.3. Manutenção de equipamentos - Interior',
+				 	},{
+				 		text: '12.4.5.4. Instrução e movimentação dos processos no PAE (manutenção e conservação predial) - Interior',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.6. Controle de acesso e segurança',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.6.1. Controle de acesso',
+				 	},{
+				 		text: '12.4.6.2. Segurança eletrônica',
+				 	},{
+				 		text: '12.4.6.3. Segurança armada',
+				 	},{
+				 		text: '12.4.6.4. Prevenção contra incêndios',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.7. Controle do acervo de projetos de Engenharia dos imóveis do Tribunal',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.7.1. Acervo em formato físico',
+				 	},{
+				 		text: '12.4.7.2. Acervo em formato eletrônico',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.8. Controle da cessão/empréstimo de espaço físico ',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.8.1. Imóveis da capital',
+				 	},{
+				 		text: '12.4.8.2. Imóveis do interior',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.9. Serviços de Arquitetura',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.9.1. Projetos arquitetônicos',
+				 	},{
+				 		text: '12.4.9.2. Serviços diversos',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.10. Comunicação visual dos imóveis',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.10.1. Comunicação visual dos imóveis - interna',
+				 	},{
+				 		text: '12.4.10.2. Comunicação visual dos imóveis - externa',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.11. Atendimento às demandas das Centrais do Cidadão/postos de atendimento ao eleitor',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.11.1. Gestão das Centrais do Cidadão',
+				 	},{
+				 		text: '12.4.1.2. Vistorias para fins de manutenção',
+				 	},
+				 	]
+			 	},{
+			 		text: '12.4.12. Apoio a eventos',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+				 	{
+				 		text: '12.4.12.1. Eventos Internos',
+				 	},{
+				 		text: '12.4.12.2. Eventos Externos',
+				 	},
+				 	]
+			 	},
+			 	]
+		 	},
+		 	]
+		},{
+			
+			text: '13. Macroprocesso de Suporte: Gestão da Informação e do Conhecimento	',
+		 	backColor:'#C0C0C0',
+		 	nodes:[
+			{
+				text: '13.1.Processo: Gestão da informação, do conhecimento e da documentação arquivística',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+				{
+					text: '13.1.1. Gestão da informação',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+					{
+						text:'13.1.1.1. Classificação e tratamento da informação',
+					},{
+						text:'13.1.1.2. Classificação da informação segundo o grau de sigilo',
+					},{
+						text:'13.1.1.3. Ações e Projetos',
+					},
+				 	]						
+				},{
+					text: '13.1.2. Gestão de documentos arquivísticos',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+					{
+						text:'13.1.2.1. Tabela de Temporalidade Documental',
+					},{
+						text:'13.1.2.2. Processo Administrativo Eletrônico',
+					},{
+						text:'13.1.2.3. Padronização da documentação institucional',
+					},{
+						text:'13.1.2.4. Gestão documental',
+					},{
+						text:'13.1.2.5. Sistemas de biblioteca e editoração',
+					},{
+						text:'13.1.2.6. Instrução e movimentação dos processos no PAE',
+					},
+				 	]						
+				},{
+					text: '13.1.3. Gestão do conhecimento',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+					{
+						text:'13.1.3.1. Gestão dos Conhecimentos Organizacionais',
+					},{
+						text:'13.1.3.2. Ambientes para Gestão do Conhecimento',
+					},{
+						text:'13.1.3.3. Gerenciamento da Base de Conhecimento de TIC',
+					},{
+						text:'13.1.3.4. Gerenciamento da base de conhecimento da SGP',
+					},
+				 	]						
+				},{
+					text: '13.1.4. Gerenciamento e controle de serviços postais',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+					{
+						text:'13.1.4.1. Gestão dos serviços postais',
+					},
+				 	]						
+				},{
+					text: '13.1.5. Protocolização e distribuição de documentos e processos',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+					{
+						text:'13.1.5.1. Documentos e processos físicos',
+					},{
+						text:'13.1.5.2. Petições Eletrônicas - SADP PUSH',
+					},{
+						text:'13.1.5.3. Distribuição de documentos e processos',
+					},{
+						text:'13.1.5.4. Atendimento ao público externo',
+					},
+				 	]						
+				},
+			 	]					
+			},{
+				text: '13.2.Processo: Gestão do acervo arquivístico	',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+				{
+					text:'13.2.1. Gestão do Arquivo Central',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+					{
+						text:'13.2.1.1. Consultas - processos e documentos',
+					},{
+						text:'13.2.1.2. Arquivamento e desarquivamento',
+					},{
+						text:'13.2.1.3. Empréstimo de processos ou documentos',
+					},{
+						text:'13.2.1.4. Eliminação de processos e documentos',
+					},{
+						text:'13.2.1.5. Digitalização da massa documental',
+					},	
+					]				
+				},
+				]				
+			},{
+				text:'13.3.Processo: Gestão do acervo bibliográfico e do Centro de Memória',
+			 	backColor:'#D1EEEE',
+			 	nodes:[
+				{
+					text:'13.3.1. Editoração de publicações',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+					{
+						text:'13.3.1.1. Seleção e preparação dos originais',												
+					},{
+						text:'13.3.1.2. Projeto gráfico',												
+					},{
+						text:'13.3.1.3. Diagramação',												
+					},{
+						text:'13.3.1.4. Revisão',												
+					},{
+						text:'13.3.1.5. Produção gráfica para impressão',												
+					},
+					]					
+				},{
+					text:'13.3.2. Gestão da memória institucional',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+					{
+						text:'13.3.2.1. Gestão do Centro de Memória',												
+					},{
+						text:'13.3.2.2. Publicações - Memória institucional',												
+					},{
+						text:'13.3.2.3. Intercâmbio',
+					}
+					]					
+				},{
+					text:'13.3.3. Formação, tratamento e divulgação do acervo bibliográfico',
+				 	backColor:'#D1EEEE',
+				 	nodes:[
+					{
+						text:'13.3.3.1. Classificação, catalogação e preparação física da obra',				
+					},{
+						text:'13.3.3.2. Atualização do acervo',												
+					},{
+						text:'13.3.3.3. Atendimento ao usuário',
+					},{
+						text:'13.3.3.4. Disseminação seletiva da informação',				
+					},{
+						text:'13.3.3.5. Exposições e eventos',												
+					},{
+						text:'13.3.3.6. Divulgação do acervo bibliográfico',
+					},{
+						text:'13.3.3.7. Seleção negativa do acervo',
+					},
+					]						
+				},
+				]				
+			},
+		 	]
+		}
+
+
+		];
+
+		$('#tree').treeview({data: tree});
+	</script>
+</body>
